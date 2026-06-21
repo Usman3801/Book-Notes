@@ -1,0 +1,40 @@
+<h1>Edit Book Entry</h1>
+<p><a href="/">Cancel and Go Back</a></p>
+
+<!-- Submits to the POST /edit route -->
+<form action="/edit" method="POST">
+    <!-- Hidden input holding the row ID so the backend knows which book to update -->
+    <input type="hidden" name="id" value="<%= books.id %>">
+
+    <div>
+        <label for="title">Book Title:</label><br>
+            <input type="text" id="title" name="title" value="<%= books.title %>" required>
+    </div>
+    <br>
+    <div>
+        <label for="author">Author:</label><br>
+        <input type="text" id="author" name="author" value="<%= books.author %>" required>
+    </div>
+    <br>
+    <div>
+        <label for="rating">Rating (1-10):</label><br>
+        <input type="number" id="rating" name="rating" min="1" max="10" value="<%= books.rating %>" required>
+    </div>
+    <br>
+    <div>
+        <label for="date_read">Date Finished:</label><br>
+        <input type="date" id="date_read" name="date_read" value="<%= books.date_read ? new Date(books.date_read).toISOString().split('T')[0] : '' %>" required>
+    </div>
+    <br>
+    <div>
+        <label for="isbn">ISBN Number:</label><br>
+        <input type="text" id="isbn" name="isbn" value="<%= books.isbn %>" required>
+    </div>
+    <br>
+    <div>
+        <label for="notes">Your Notes & Impressions:</label><br>
+        <textarea id="notes" name="notes" rows="8" cols="50" required><%= books.notes %></textarea>
+    </div>
+    <br>
+    <button type="submit">Update Changes</button>
+</form>

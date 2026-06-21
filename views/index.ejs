@@ -1,0 +1,36 @@
+<a href="/new">Add</a>
+
+<form action="/" method="GET" class="sort-form">
+    <label for="sort">Sort By:</label>
+    <select name="sort" id="sort" onchange="this.form.submit()">
+        <option value="rating_desc" <%= currentSort === 'rating_desc' ? 'selected' : '' %>>Rating (High to Low)</option>
+        <option value="rating_asc" <%= currentSort === 'rating_asc' ? 'selected' : '' %>>Rating (Low to High)</option>
+        <option value="date_desc" <%= currentSort === 'date_desc' ? 'selected' : '' %>>Date (Newest First)</option>
+        <option value="date_asc" <%= currentSort === 'date_asc' ? 'selected' : '' %>>Date (Oldest First)</option>
+        <option value="title_asc" <%= currentSort === 'title_asc' ? 'selected' : '' %>>Title (A-Z)</option>
+    </select>
+</form>
+
+<% books.forEach(book => { %>
+    <h1><%= book.title %></h1>
+    <p><%= book.author %></p>
+    <p><%= book.rating %></p>
+    <p><%= book.notes %></p>
+    <p><%= new Date(book.date_read).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+    <% if (book.isbn) { %>
+    <img 
+        src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" 
+        alt="<%= book.title %>"
+        onerror="this.src='/images/no-cover.png'"
+    >
+    <% } else { %>
+        <img src="/images/no-cover.png" alt="No cover available">
+    <% } %>
+
+    <form action="/delete" method="POST">
+        <input type="hidden" name="id" value="<%= book.id %>">
+        <button type="submit">Delete</button>
+    </form>
+    <a href="/edit/<%= book.id %>" class="btn">Edit</a>
+    <hr>
+<% }); %>
