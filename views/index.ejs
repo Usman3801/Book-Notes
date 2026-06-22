@@ -1,36 +1,70 @@
-<a href="/new">Add</a>
+<%- include('partials/header') %>
 
-<form action="/" method="GET" class="sort-form">
-    <label for="sort">Sort By:</label>
-    <select name="sort" id="sort" onchange="this.form.submit()">
-        <option value="rating_desc" <%= currentSort === 'rating_desc' ? 'selected' : '' %>>Rating (High to Low)</option>
-        <option value="rating_asc" <%= currentSort === 'rating_asc' ? 'selected' : '' %>>Rating (Low to High)</option>
-        <option value="date_desc" <%= currentSort === 'date_desc' ? 'selected' : '' %>>Date (Newest First)</option>
-        <option value="date_asc" <%= currentSort === 'date_asc' ? 'selected' : '' %>>Date (Oldest First)</option>
-        <option value="title_asc" <%= currentSort === 'title_asc' ? 'selected' : '' %>>Title (A-Z)</option>
-    </select>
-</form>
 
-<% books.forEach(book => { %>
-    <h1><%= book.title %></h1>
-    <p><%= book.author %></p>
-    <p><%= book.rating %></p>
-    <p><%= book.notes %></p>
-    <p><%= new Date(book.date_read).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
-    <% if (book.isbn) { %>
-    <img 
-        src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" 
-        alt="<%= book.title %>"
-        onerror="this.src='/images/no-cover.png'"
-    >
-    <% } else { %>
-        <img src="/images/no-cover.png" alt="No cover available">
-    <% } %>
+<div class="sort-div">
+    <a href="/new">Add</a>
 
-    <form action="/delete" method="POST">
-        <input type="hidden" name="id" value="<%= book.id %>">
-        <button type="submit">Delete</button>
+    <form action="/" method="GET" class="sort-form">
+        <label for="sort" class="label">Sort By:</label>
+        <select name="sort" id="sort" onchange="this.form.submit()">
+            <option value="rating_desc" <%= currentSort === 'rating_desc' ? 'selected' : '' %>>Rating (High to Low)</option>
+            <option value="rating_asc" <%= currentSort === 'rating_asc' ? 'selected' : '' %>>Rating (Low to High)</option>
+            <option value="date_desc" <%= currentSort === 'date_desc' ? 'selected' : '' %>>Date (Newest First)</option>
+            <option value="date_asc" <%= currentSort === 'date_asc' ? 'selected' : '' %>>Date (Oldest First)</option>
+            <option value="title_asc" <%= currentSort === 'title_asc' ? 'selected' : '' %>>Title (A-Z)</option>
+        </select>
     </form>
-    <a href="/edit/<%= book.id %>" class="btn">Edit</a>
-    <hr>
-<% }); %>
+</div>
+
+
+<div class="novel-div">
+    <% books.forEach(book => { %>
+        <!-- Card container for a single book item -->
+        <div class="book-card">
+            
+            <!-- Top Section: Image and Meta Details -->
+            <div class="card-top">
+                <div class="image-container">
+                    <% if (book.isbn) { %>
+                        <img class="novel-image"
+                            src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" 
+                            alt="<%= book.title %>"
+                            onerror="this.src='/images/no-cover.png'">
+                    <% } else { %>
+                        <img class="novel-image" src="/images/no-cover.png" alt="No cover available">
+                    <% } %>
+                </div>
+                
+                <div class="meta-details">
+                    <h1 class="novel-name"><%= book.title %></h1>
+                    <p class="novel-author"><%= book.author %></p>
+                    <p class="novel-rate">⭐ <%= book.rating %></p>
+                </div>
+            </div>
+
+            <!-- Middle Section: Notes -->
+            <div class="card-notes">
+                <p class="novel-notes"><%= book.notes %></p>
+            </div>
+
+            <!-- Bottom Section: Date and Action Buttons -->
+            <div class="card-bottom">
+                <p class="novel-date">
+                    <%= new Date(book.date_read).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                </p>
+                
+                <div class="card-actions">
+                    <a href="/edit/<%= book.id %>" class="btn button-links">Edit</a>
+                    <form action="/delete" method="POST" class="delete-form">
+                        <input type="hidden" name="id" value="<%= book.id %>">
+                        <button type="submit" class="delete-btn">Delete</button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    <% }); %>
+</div>
+
+
+<%- include('partials/footer') %>

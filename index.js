@@ -1,9 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 import pg from "pg";
 
 const app = express();
 const port = 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const db = new pg.Client({
   user: "postgres",
@@ -15,7 +19,7 @@ const db = new pg.Client({
 db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public/styles/main.css"));
+app.use(express.static(join(__dirname, "public")));
 
 
 //homepage

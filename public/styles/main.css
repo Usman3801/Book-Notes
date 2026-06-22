@@ -1,109 +1,161 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    margin: 0;
-    padding: 30px;
-}
-
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.book-card {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.book-cover {
-    width: 120px;
-    height: auto;
-    border-radius: 4px;
-}
-
-.book-cover-placeholder {
-    width: 120px;
-    height: 180px;
-    background: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.book-info {
-    flex: 1;
-}
-
-.book-title {
-    margin-top: 0;
-}
-
-.book-author,
-.book-rating,
-.book-date {
-    color: #555;
-}
-
-.book-notes {
-    line-height: 1.6;
-}
-
-.book-actions {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
-}
-
-.edit-btn,
-.delete-btn,
-.submit-btn,
-.back-link {
-    padding: 8px 14px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.edit-btn,
-.submit-btn {
-    background: #2563eb;
+    background-color: black;
     color: white;
+    font-family: Arial, sans-serif;
+}
+/* all links */
+a {
+    text-decoration: none;
+    background-color: white;
+}
+/* add and dropdown */
+.sort-div {
+    background-color: green;
+    max-width: max-content;
+    display: flex;
+    height: 30px;   
+}
+/* Add link */
+.sort-div > a {
+    border-radius: 5px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+}
+/* dropdown */
+.sort-div > :not(a) {
+  font-size: 17px;
+  margin-left: 20px;
+}
+/* Container for all cards */
+.novel-div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+/* Individual Book Card Wrapper */
+.book-card {
+  border: 2px solid #333;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+/* Top Section Layout */
+.card-top {
+  display: flex;
+  border-bottom: 2px solid #333;
+}
+/* Fixed Image Box Size */
+.image-container {
+  width: 120px;
+  min-width: 120px;
+  height: 150px;
+  border-right: 2px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+/* novel image */
+.novel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Top Right Text (Title, Author, Rating) */
+.meta-details {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.novel-name {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #111;
+}
+
+.novel-author {
+  margin: 0;
+  font-style: italic;
+  color: #555;
+}
+
+.novel-rate {
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Middle Section Layout (Notes) */
+.card-notes {
+  padding: 16px;
+  border-bottom: 2px solid #333;
+  min-height: 60px;
+}
+
+.novel-notes {
+  margin: 0;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* Bottom Section Layout (Date & Buttons) */
+.card-bottom {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fcfcfc;
+}
+
+.novel-date {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Action Buttons Positioning */
+.card-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.button-links, .delete-btn {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.button-links {
+  background-color: #eaeaea;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.delete-form {
+  margin: 0;
 }
 
 .delete-btn {
-    background: #dc2626;
-    color: white;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
 }
 
-.book-form {
-    max-width: 700px;
-    margin: 0 auto;
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-input,
-.form-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-}
-
-.page-title {
-    text-align: center;
-}
-
-.divider {
-    border: none;
-    border-top: 1px solid #ddd;
+.delete-btn:hover {
+  background-color: #e03333;
 }
