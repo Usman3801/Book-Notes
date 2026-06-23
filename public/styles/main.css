@@ -3,32 +3,60 @@ body {
     color: white;
     font-family: Arial, sans-serif;
 }
-/* all links */
-a {
-    text-decoration: none;
-    background-color: white;
-}
+
 /* add and dropdown */
 .sort-div {
-    background-color: green;
-    max-width: max-content;
-    display: flex;
-    height: 30px;   
+display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  max-width: 600px;          
+  margin: 30px auto 10px auto;
+  padding: 0 16px; 
 }
+
 /* Add link */
 .sort-div > a {
-    border-radius: 5px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 17px;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #673ab7; 
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  border: 1px solid #512da8;
+  transition: background-color 0.2s;
 }
-/* dropdown */
-.sort-div > :not(a) {
-  font-size: 17px;
-  margin-left: 20px;
+
+/* hover */
+.sort-div > a:hover {
+  background-color: #512da8;
 }
+
+/* sort form container */
+.sort-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* sort label */
+.sort-form .label {
+  color: #ffffff; 
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Sort Dropdown Selection */
+.sort-form select {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
 /* Container for all cards */
 .novel-div {
   display: flex;
@@ -38,6 +66,7 @@ a {
   margin: 20px auto;
   padding: 0 16px;
 }
+
 /* Individual Book Card Wrapper */
 .book-card {
   border: 2px solid #333;
@@ -46,11 +75,13 @@ a {
   flex-direction: column;
   background-color: #ffffff;
 }
+
 /* Top Section Layout */
 .card-top {
   display: flex;
   border-bottom: 2px solid #333;
 }
+
 /* Fixed Image Box Size */
 .image-container {
   width: 120px;
@@ -63,12 +94,14 @@ a {
   overflow: hidden;
   background-color: #f9f9f9;
 }
+
 /* novel image */
 .novel-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 /* Top Right Text (Title, Author, Rating) */
 .meta-details {
   padding: 16px;
@@ -78,38 +111,42 @@ a {
   gap: 8px;
 }
 
+/* novel name */
 .novel-name {
   margin: 0;
   font-size: 1.5rem;
   color: #111;
 }
 
+/* novel author */
 .novel-author {
   margin: 0;
   font-style: italic;
   color: #555;
 }
 
+/* Novel rating */
 .novel-rate {
   margin: 0;
   font-weight: bold;
   color: #333;
 }
 
-/* Middle Section Layout (Notes) */
+/* notes container */
 .card-notes {
   padding: 16px;
   border-bottom: 2px solid #333;
   min-height: 60px;
 }
 
+/* novel notes */
 .novel-notes {
   margin: 0;
   color: #444;
   line-height: 1.4;
 }
 
-/* Bottom Section Layout (Date & Buttons) */
+/* date & buttons */
 .card-bottom {
   padding: 12px 16px;
   display: flex;
@@ -118,19 +155,21 @@ a {
   background-color: #fcfcfc;
 }
 
+/* novel dates */
 .novel-date {
   margin: 0;
   font-size: 0.9rem;
   color: #666;
 }
 
-/* Action Buttons Positioning */
+/* action buttons container*/
 .card-actions {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
+/* action buttons */
 .button-links, .delete-btn {
   padding: 6px 12px;
   border-radius: 4px;
@@ -140,22 +179,124 @@ a {
   font-family: inherit;
 }
 
+/* edit button */
 .button-links {
   background-color: #eaeaea;
   color: #333;
   border: 1px solid #ccc;
 }
 
+/* delete container */
 .delete-form {
   margin: 0;
 }
 
+/* delete button */
 .delete-btn {
   background-color: #ff4d4d;
   color: white;
   border: none;
 }
 
+/* hover */
 .delete-btn:hover {
   background-color: #e03333;
+}
+
+
+/* EDIT PAGE */
+/* main container */
+.form-container {
+    max-width: 600px;           
+    margin: 40px auto;          
+    padding: 0 16px;           
+}
+
+/* title */
+.form-container h1 {
+    margin: 0 0 8px 0;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+/* back button */
+.cancel-link {
+    text-decoration: none;
+    color: #b39ddb;             
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+/* back hover */
+.cancel-link:hover {
+    color: #d1c4e9;
+}
+
+/* form container*/
+.entry-form {
+    display: flex;
+    flex-direction: column;    
+}
+
+/* rows */
+.form-group {
+    display: flex;
+    flex-direction: column;    
+}
+
+/* all edit labels */
+.form-group label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: -10px; 
+}
+
+/* all edit input */
+.entry-form input[type="text"],
+.entry-form input[type="number"],
+.entry-form input[type="date"],
+.entry-form textarea {
+    width: 100%;               
+    padding: 12px;
+    border: 1px solid #444;     
+    border-radius: 4px;
+    background-color: #1a1a1a; 
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1rem;
+    box-sizing: border-box;    
+}
+
+/* input focus states */
+.entry-form input:focus,
+.entry-form textarea:focus {
+    outline: none;
+    border-color: #673ab7;    
+}
+
+/* edit notes */
+.entry-form textarea {
+    resize: vertical;           
+    line-height: 1.5;
+}
+
+/* submit button */
+.submit-btn {
+    align-self: flex-start;   
+    padding: 12px 24px;
+    background-color: #673ab7;  
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 1px solid #512da8;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s;
+}
+
+/* submit hover */
+.submit-btn:hover {
+    background-color: #512da8;
 }

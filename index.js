@@ -56,7 +56,7 @@ app.post("/add", async (req, res) => {
         const newAuthor = req.body.author;
         const newRating = req.body.rating;
         const newDate = req.body.date_read;
-        const newIsbn = req.body.isbn;
+        const newIsbn = req.body.isbn || null;
         const newNote = req.body.notes;
     
         await db.query(
@@ -106,7 +106,7 @@ app.post("/edit", async (req, res) => {
         const newAuthor = req.body.author;
         const newRating = req.body.rating;
         const newDate = req.body.date_read;
-        const newIsbn = req.body.isbn;
+        const newIsbn = req.body.isbn || null;
         const newNote = req.body.notes;
         
         await db.query(
